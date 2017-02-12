@@ -8,6 +8,9 @@ Bundler.require(*Rails.groups)
 
 module Rcg
   class Application < Rails::Application
+    %W{app/presenters app/interactors}.each do |p|
+      config.autoload_paths += [config.root.join(p)]
+    end
 
     config.web_console.whitelisted_ips = '10.0.2.2'
     config.web_console.development_only = false
