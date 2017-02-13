@@ -16,3 +16,8 @@ The primary features as I see it are:
   * For long running or highly active conversations, a pane or tab that shows top reacted comments and comments that were broken into new topics.
   * A @mention system for saying things to specific people in a conversation
   * Ability to search topics and conversation (use ElasticSearch for this)
+  * Ability to post picture, video, gif, or HTML5 video have it load into the chat.
+  * Ability to upload/download files
+  * Link to Steam account
+  * Emoticon support
+  * Markdown formatting support
