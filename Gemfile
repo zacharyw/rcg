@@ -53,7 +53,7 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'bootstrap-sass', '~> 3.3.6'
-gem 'bootstrap3_form_builder', '1.0.1'
+gem 'bootstrap3_form_builder', '1.0.5'
 gem 'therubyracer', platforms: :ruby
 gem 'draper', '~> 3.0.0.pre1'
 group :development, :test do
