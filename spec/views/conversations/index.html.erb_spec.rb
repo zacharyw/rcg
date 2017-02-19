@@ -26,7 +26,7 @@ describe "conversations/index.html.erb", type: :view do
   context 'When logged in 'do
     let(:user) { FactoryGirl.create(:user) }
 
-    it 'Does renders new form' do
+    it 'Renders new form' do
       expect(rendered).to have_css "form#new_conversation"
     end
   end
