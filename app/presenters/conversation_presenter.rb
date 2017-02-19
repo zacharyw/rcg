@@ -1,4 +1,6 @@
 class ConversationPresenter
+  include ActionView::Helpers
+  
   attr_reader :conversation
   
   delegate :user, :messages, :created_at, to: :conversation
@@ -7,15 +9,15 @@ class ConversationPresenter
     @conversation = conversation
   end
 
-  def preview(view)
-    view.truncate(messages.first.body, length: 300)
+  def preview
+    truncate(messages.first.body, length: 300)
   end
 
   def author
     user.username
   end
 
-  def time_ago(view)
-    view.distance_of_time_in_words(created_at, Time.now)
+  def time_ago
+    distance_of_time_in_words(created_at, Time.now)
   end
 end
