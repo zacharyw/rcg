@@ -1,8 +1,12 @@
-<div class="panel panel-default">
-  <div class="panel-heading">
-    <%= conversation.author %>
-  </div>
-  <div class="panel-body">
-    <%= conversation.preview %>
+<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+  <div class="panel panel-default conversation">
+    <div class="panel-heading">
+      <%= conversation.author %> <span class="text-muted"><%= conversation.time_ago(self) %> ago</span>
+    </div>
+    <div class="panel-body">
+      <div class="conversation-body">
+        <%= conversation.preview(self) %>
+      </div>
+    </div>
   </div>
 </div>

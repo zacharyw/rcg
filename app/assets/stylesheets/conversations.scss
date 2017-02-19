@@ -1,3 +1,13 @@
-// Place all the styles related to the Conversations controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+#editable-body {
+  overflow: auto;
+  height: 6em;
+}
+
+.conversation-body {
+  height: 7em;
+  overflow: hidden;
+}
+
+#editable-body:focus {
+  outline: 0 solid transparent;
+}
