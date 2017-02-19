@@ -65,5 +65,9 @@ group :development, :test do
   gem 'awesome_print'
 end
 
+group :test do
+  gem 'capybara'
+end
+
 gem 'devise'
 gem 'pundit'
