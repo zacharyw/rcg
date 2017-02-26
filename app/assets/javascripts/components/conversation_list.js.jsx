@@ -9,6 +9,7 @@ class ConversationList extends React.Component {
   }
 
   updateList(conversation) {
+    conversation = JSON.parse(conversation);
     // Append new conversation to front of list
     this.setState({conversations: [conversation].concat(this.state.conversations)})
   }

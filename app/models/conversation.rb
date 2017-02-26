@@ -5,6 +5,6 @@ class Conversation < ApplicationRecord
   after_create :broadcast
 
   def broadcast
-    ConversationChannel.broadcast_to 'conversations', self
+    ConversationChannel.broadcast_to 'conversations', ActiveModelSerializers::SerializableResource.new(self)
   end
 end
