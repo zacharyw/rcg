@@ -77,3 +77,4 @@ gem 'devise'
 gem 'pundit'
 
 gem 'react-rails'
+gem 'active_model_serializers', '~> 0.10.0'
