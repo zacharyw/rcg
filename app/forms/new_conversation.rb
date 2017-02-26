@@ -1,4 +1,4 @@
-class Forms::Conversation
+class NewConversation
   include ActiveModel::Model
 
   attr_accessor :body
@@ -7,7 +7,7 @@ class Forms::Conversation
 
   # Build a new Conversation object with a single message containing the given body.
   def perform
-    conversation = ::Conversation.new
+    conversation = Conversation.new
     conversation.messages.build(body: body)
 
     conversation

@@ -1,11 +1,11 @@
 class ConversationsController < ApplicationController
   def index
-    @conversations = Conversation.all
-    @new_conversation = Forms::Conversation.new
+    @conversations = ConversationsFetcher.new.perform
+    @new_conversation = NewConversation.new
   end
 
   def create
-    @new_conversation = Forms::Conversation.new(conversation_params)
+    @new_conversation = NewConversation.new(conversation_params)
     
     if @new_conversation.valid?
       conversation = @new_conversation.perform
@@ -14,7 +14,7 @@ class ConversationsController < ApplicationController
 
       redirect_to conversations_path
     else
-      @conversations = Conversation.all
+      @conversations = ConversationsFetcher.new.perform
       render :index
     end
   end
