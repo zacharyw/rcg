@@ -63,6 +63,7 @@ group :development, :test do
   gem 'ruby-debug-ide'
   gem 'timecop'
   gem 'awesome_print'
+  gem 'guard-rspec'
 end
 
 group :test do
@@ -74,3 +75,5 @@ end
 
 gem 'devise'
 gem 'pundit'
+
+gem 'react-rails'
