@@ -5,7 +5,7 @@ feature "Conversations list", js: true do
   
   let!(:conversation) { FactoryGirl.create(:conversation) }
 
-  let(:presenter) { ConversationPresenter.new(conversation) }
+  let(:serializer) { ConversationSerializer.new(conversation) }
   let(:user) { FactoryGirl.create(:user) }
 
   scenario 'User visits conversations page and creates a conversation' do
@@ -13,15 +13,15 @@ feature "Conversations list", js: true do
 
     expect(page).not_to have_new_form
 
-    expect(page).to have_content presenter.author
-    expect(page).to have_content presenter.preview
+    expect(page).to have_content serializer.author
+    expect(page).to have_content serializer.preview
 
     log_in_as(user)
 
     visit conversations_path
 
-    expect(page).to have_content presenter.author
-    expect(page).to have_content presenter.preview
+    expect(page).to have_content serializer.author
+    expect(page).to have_content serializer.preview
 
     write_conversation("Testing new convo")
     post_conversation
