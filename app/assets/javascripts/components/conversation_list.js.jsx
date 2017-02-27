@@ -1,7 +1,7 @@
 class ConversationList extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {conversations: props.conversations}
+    this.state = {conversations: props.conversations};
   }
 
   componentDidMount() {
@@ -11,7 +11,7 @@ class ConversationList extends React.Component {
   updateList(conversation) {
     conversation = JSON.parse(conversation);
     // Append new conversation to front of list
-    this.setState({conversations: [conversation].concat(this.state.conversations)})
+    this.setState({conversations: [conversation].concat(this.state.conversations)});
   }
   
   render() {
@@ -31,7 +31,7 @@ class ConversationList extends React.Component {
         this.updateList(conversation);
       },
       // Assign updateList function from ConversationList class, so it is usable within this subscription
-      updateList: this.updateList
+      updateList: this.updateList.bind(this)
     });
   }
 }

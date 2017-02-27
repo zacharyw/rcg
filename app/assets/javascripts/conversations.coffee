@@ -1,11 +1,11 @@
 $ ->
   $newConversationBody = $("#editable-body")
 
-  $newConversationBody.one "click", (event) ->
-    $newConversationBody.empty()
-
   $newConversationBody.on "click", (event) ->
     $newConversationBody.tooltip('destroy')
+
+    if $newConversationBody.text().trim() == 'Write something...'
+      $newConversationBody.empty()
 
   $submitButton = $("#new-conversation-submit")
   $submitButton.on "click", (event) ->
@@ -15,3 +15,5 @@ $ ->
       $newConversationBody.tooltip('show')
     else
       $("#conversation_body").val($newConversationBody.text())
+      $newConversationBody.text('Write something...')
+      $("#conversation_body").empty()
