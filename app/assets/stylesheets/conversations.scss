@@ -1,0 +1,13 @@
+#editable-body {
+  overflow: auto;
+  height: 6em;
+}
+
+.conversation-body {
+  height: 7em;
+  overflow: hidden;
+}
+
+#editable-body:focus {
+  outline: 0 solid transparent;
+}

@@ -8,7 +8,7 @@ Bundler.require(*Rails.groups)
 
 module Rcg
   class Application < Rails::Application
-    %W{app/presenters app/interactors}.each do |p|
+    %W{app/presenters app/interactors app/forms app/serializers}.each do |p|
       config.autoload_paths += [config.root.join(p)]
     end
 

@@ -55,7 +55,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'bootstrap3_form_builder', '1.0.5'
 gem 'therubyracer', platforms: :ruby
-gem 'draper', '~> 3.0.0.pre1'
+
 group :development, :test do
   gem 'rspec-rails', '~> 3.5.0.beta3'
   gem 'factory_girl_rails'
@@ -63,11 +63,18 @@ group :development, :test do
   gem 'ruby-debug-ide'
   gem 'timecop'
   gem 'awesome_print'
+  gem 'guard-rspec'
 end
 
 group :test do
   gem 'capybara'
+  gem 'capybara-screenshot'
+  gem "capybara-webkit"
+  gem 'database_cleaner'
 end
 
 gem 'devise'
 gem 'pundit'
+
+gem 'react-rails'
+gem 'active_model_serializers', '~> 0.10.0'
