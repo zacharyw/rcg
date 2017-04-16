@@ -69,8 +69,9 @@ end
 group :test do
   gem 'capybara'
   gem 'capybara-screenshot'
-  gem "capybara-webkit"
+  gem 'selenium-webdriver'
   gem 'database_cleaner'
+  gem 'transactional_capybara'
 end
 
 gem 'devise'

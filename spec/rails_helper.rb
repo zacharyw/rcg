@@ -6,6 +6,7 @@ abort("The Rails environment is running in production mode!") if Rails.env.produ
 require 'spec_helper'
 require 'rspec/rails'
 require 'capybara-screenshot/rspec'
+require "transactional_capybara/rspec"
 
 Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
 Dir[Rails.root.join("spec/features/steps/**/*.rb")].each {|f| require f}
@@ -39,19 +40,27 @@ ActiveRecord::Migration.maintain_test_schema!
 RSpec.configure do |config|
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   # config.fixture_path = "#{::Rails.root}/spec/fixtures"
-config.include FactoryGirl::Syntax::Methods
+  config.include FactoryGirl::Syntax::Methods
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
   # examples within a transaction, remove the following line or assign false
   # instead of true.
-  config.use_transactional_fixtures = false
+  config.use_transactional_fixtures = true
+  config.order = "random"
 
   config.before(:suite) do
     DatabaseCleaner[:active_record].strategy = :transaction
     DatabaseCleaner.clean_with :truncation
   end
 
-  config.before(:each, js: true) { DatabaseCleaner[:active_record].strategy = :truncation }
-  config.after(:each, js: true) { DatabaseCleaner[:active_record].strategy = :transaction }
+  config.before(:each) do
+    DatabaseCleaner.start
+    Rails.cache.clear
+  end
+
+  config.append_after(:each) do
+    DatabaseCleaner.clean
+    Timecop.return
+  end
 
   # RSpec Rails can automatically mix in different behaviours to your tests
   # based on their file location, for example enabling you to call `get` and
@@ -80,7 +89,19 @@ config.include FactoryGirl::Syntax::Methods
   end
 end
 
-Capybara.javascript_driver = :webkit
+Capybara.configure do |config|
+  config.server = :puma
+end
+
+Capybara.register_driver :chrome do |app|
+  Capybara::Selenium::Driver.new(app, :browser => :chrome)
+end
+
+Capybara.javascript_driver = :chrome
+
+Capybara::Screenshot.register_driver(:chrome) do |driver, path|
+  driver.browser.save_screenshot(path)
+end
 
 def log_in_as(user)
   login_as(user, :scope => :user, :run_callbacks => false)
