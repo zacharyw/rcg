@@ -6,6 +6,8 @@
 2. `bundle install`
 3. `brew install chromedriver`
 
+## Description
+
 RCG is a hybrid chat/forum software.
 
 The primary features as I see it are:
