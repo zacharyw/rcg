@@ -5,6 +5,7 @@
 1. Clone repository
 2. `bundle install`
 3. `brew install chromedriver`
+4. `rspec spec` All specs should pass
 
 ## Description
 
