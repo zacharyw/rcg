@@ -1,7 +1,7 @@
 class MessageBroadcaster
   attr_reader :message, :conversation
   
-  def initialize(message)
+  def initialize(message:)
     @message = message
     @conversation = message.conversation
   end
