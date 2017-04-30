@@ -6,7 +6,9 @@ class MessageSavor
   end
 
   def perform
-    message.save
+    if message.save
+      MessageBroadcaster.new(message).perform
+    end
 
     message
   end
