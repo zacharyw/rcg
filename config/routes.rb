@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   resources :conversations, except: :edit
 
+  resources :messages, only: :create
+
   devise_for :users
   root to: "conversations#index"
 

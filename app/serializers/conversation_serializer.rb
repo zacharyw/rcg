@@ -1,7 +1,8 @@
 class ConversationSerializer < ActiveModel::Serializer
   include ActionView::Helpers
+  include Rails.application.routes.url_helpers
 
-  attributes :id, :preview, :author, :time_ago
+  attributes :id, :preview, :author, :time_ago, :show_link
 
   delegate :user, :messages, :created_at, :id, to: :conversation
   
@@ -19,5 +20,9 @@ class ConversationSerializer < ActiveModel::Serializer
 
   def conversation
     object
+  end
+
+  def show_link
+    link_to preview, conversation_path(conversation)
   end
 end

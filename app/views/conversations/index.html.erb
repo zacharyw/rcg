@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row-fluid">
   <% if user_signed_in? %>
     <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
       <div class="panel panel-primary">
@@ -17,4 +17,11 @@
     </div>
   <% end %>
   <%= react_component('ConversationList', conversations: ActiveModelSerializers::SerializableResource.new(@conversations)) %>
+
+  <% if @conversations.blank? && !user_signed_in? %>
+    <p>
+      No conversations exist yet - <%= link_to 'sign up', new_user_registration_path %>
+      or <%= link_to 'login', new_user_session_path %> and create the first one!
+    </p>
+  <% end %>
 </div>

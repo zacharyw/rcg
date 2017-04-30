@@ -4,6 +4,7 @@ class Conversation < ApplicationRecord
 
   after_create :broadcast
 
+  private
   def broadcast
     if self.messages.size > 0
       ConversationChannel.broadcast_to 'conversations', ActiveModelSerializers::SerializableResource.new(self).to_json

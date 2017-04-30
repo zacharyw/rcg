@@ -1,2 +1,15 @@
-<h1>Conversations#show</h1>
-<p>Find me in app/views/conversations/show.html.erb</p>
+<%=
+  react_component(
+    'MessageList',
+    messages: ActiveModelSerializers::SerializableResource.new(@conversation.messages),
+    conversation_id: @conversation.id
+  )
+%>
+
+<div class="row-fluid">
+  <%= form_for Message.new, remote: true do |f| %>
+    <%= f.text_field :body %>
+    <%= f.hidden_field :conversation_id, value: @conversation.id %>
+    <%= f.submit 'Send' %>
+  <% end %>
+</div>
