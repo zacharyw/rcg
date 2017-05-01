@@ -7,9 +7,15 @@
 %>
 
 <div class="row-fluid">
-  <%= form_for Message.new, remote: true do |f| %>
-    <%= f.text_field :body %>
-    <%= f.hidden_field :conversation_id, value: @conversation.id %>
-    <%= f.submit 'Send' %>
-  <% end %>
+  <%# TODO: Replace this form with a content editable div %>
+  <div id="new-message-form">
+    <%= form_for Message.new, remote: true, html: { class: 'form-inline' } do |f| %>
+      <div class="form-group" id='new-message-group'>
+        <%= f.label 'New Message:', class: 'sr-only' %>
+        <%= f.text_field :body, placeholder: 'New message', class: 'form-control' %>
+      </div>
+      <%= f.hidden_field :conversation_id, value: @conversation.id %>
+      <%= f.submit 'Send', class: 'btn btn-primary' %>
+    <% end %>
+  </div>
 </div>

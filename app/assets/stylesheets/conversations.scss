@@ -11,3 +11,17 @@
 #editable-body:focus {
   outline: 0 solid transparent;
 }
+
+#new-message-group {
+  width: 90%;
+}
+
+#message_body {
+  width: 100%;
+}
+
+#new-message-form {
+  position: absolute;
+  bottom: 1em;
+  width: 100%;
+}
