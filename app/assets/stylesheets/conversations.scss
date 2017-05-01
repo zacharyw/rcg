@@ -20,8 +20,11 @@
   width: 100%;
 }
 
+#messages {
+  order: 0;
+}
+
 #new-message-form {
-  position: absolute;
-  bottom: 1em;
+  order: 1;
   width: 100%;
 }

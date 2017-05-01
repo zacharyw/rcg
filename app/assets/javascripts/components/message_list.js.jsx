@@ -22,7 +22,7 @@ class MessageList extends React.Component {
       <Message message={message} key={message.id}/>
     );
     return (
-      <div>
+      <div className="messages">
         {messageList}
       </div>
     );
