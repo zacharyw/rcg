@@ -316,7 +316,7 @@ DEPENDENCIES
   pundit
   rails (~> 5.0.1)
   react-rails
-  redis (~> 3.0)
+  redis
   rspec-rails (~> 3.5.0.beta3)
   ruby-debug-ide
   sass-rails (~> 5.0)
