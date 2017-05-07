@@ -5,6 +5,7 @@ class MessageList extends React.Component {
   }
 
   componentDidMount() {
+    resizeFunction();
     this.setupSubscription();
   }
 

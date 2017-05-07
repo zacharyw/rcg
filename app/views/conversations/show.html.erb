@@ -1,21 +1,19 @@
-<%=
-  react_component(
-    'MessageList',
-    messages: ActiveModelSerializers::SerializableResource.new(@conversation.messages),
-    conversation_id: @conversation.id
-  )
-%>
+<div class="conversation-container">
+  <%=
+    react_component(
+        'MessageList',
+        messages: ActiveModelSerializers::SerializableResource.new(@conversation.messages),
+        conversation_id: @conversation.id
+    )
+  %>
 
-<div class="row-fluid">
-  <%# TODO: Replace this form with a content editable div %>
   <div id="new-message-form">
-    <%= form_for Message.new, remote: true, html: { class: 'form-inline' } do |f| %>
-      <div class="form-group" id='new-message-group'>
-        <%= f.label 'New Message:', class: 'sr-only' %>
-        <%= f.text_field :body, placeholder: 'New message', class: 'form-control' %>
-      </div>
-      <%= f.hidden_field :conversation_id, value: @conversation.id %>
-      <%= f.submit 'Send', class: 'btn btn-primary' %>
-    <% end %>
+    <div class="panel panel-primary">
+      <%= form_for Message.new, remote: true, html: { class: 'form-inline' } do |f| %>
+        <%= render partial: 'new_message', locals: { css_class: 'new-message-editable' }%>
+        <%= f.text_area :body, class: 'hidden new-message-body' %>
+        <%= f.hidden_field :conversation_id, value: @conversation.id %>
+      <% end %>
+    </div>
   </div>
 </div>

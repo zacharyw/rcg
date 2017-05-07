@@ -1,6 +1,20 @@
-#editable-body {
+.editable-body {
   overflow: auto;
+}
+
+.editable-body:empty:before {
+  content: attr(placeholder);
+  display: block; /* For Firefox */
+  opacity: .375;
+}
+
+.new-conversation-editable {
   height: 6em;
+}
+
+.new-message-editable {
+  overflow: auto;
+  max-height: 10rem;
 }
 
 .conversation-body {
@@ -8,7 +22,7 @@
   overflow: hidden;
 }
 
-#editable-body:focus {
+.editable-body:focus {
   outline: 0 solid transparent;
 }
 
@@ -20,11 +34,24 @@
   width: 100%;
 }
 
-#messages {
-  order: 0;
+.conversation-container {
+  @include flexbox();
+  @include flex-direction(column);
+  @include justify-content(space-between);
+}
+
+.messages {
+  overflow-y: auto;
+  @include flexbox();
+  @include flex-direction(column);
+  @include justify-content(flex-end);
+}
+
+p {
+  @include flexbox();
 }
 
 #new-message-form {
-  order: 1;
   width: 100%;
+  @include flex-shrink(0)
 }
