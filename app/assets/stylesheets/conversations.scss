@@ -52,6 +52,27 @@
 }
 
 #new-message-form {
-  width: 100%;
-  @include flex-shrink(0)
+  @include flex-shrink(0);
 }
+
+#new-message-inputs {
+  @include flexbox();
+}
+
+#new-message-editable-panel {
+  @include flex-grow(1);
+}
+
+#send-btn {
+  display: none;
+}
+
+@media (max-width: $screen-md-max) {
+  #send-btn {
+    display: inline-block;
+    margin-bottom: 20px;
+    margin-left: 5px;
+  }
+}
+
+

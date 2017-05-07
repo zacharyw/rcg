@@ -1,4 +1,6 @@
 class ConversationsController < ApplicationController
+  before_filter :authenticate_user!, except: [:index]
+  
   def index
     @conversations = ConversationsFetcher.new.perform
     @new_conversation = NewConversation.new
