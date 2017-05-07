@@ -8,12 +8,15 @@
   %>
 
   <div id="new-message-form">
-    <div class="panel panel-primary">
-      <%= form_for Message.new, remote: true, html: { class: 'form-inline' } do |f| %>
-        <%= render partial: 'new_message', locals: { css_class: 'new-message-editable' }%>
+    <%= form_for Message.new, remote: true, html: { class: 'form-inline' } do |f| %>
+      <div id="new-message-inputs">
+        <div class="panel panel-primary" id="new-message-editable-panel">
+          <%= render partial: 'new_message', locals: { css_class: 'new-message-editable' }%>
+        </div>
         <%= f.text_area :body, class: 'hidden new-message-body' %>
         <%= f.hidden_field :conversation_id, value: @conversation.id %>
-      <% end %>
-    </div>
+        <%= f.submit 'Send', class: 'btn btn-primary', id: 'send-btn' %>
+      </div>
+    <% end %>
   </div>
 </div>

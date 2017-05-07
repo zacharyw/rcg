@@ -17,7 +17,7 @@ $(document).on 'turbolinks:load', ->
       $editableMessageBody.tooltip('show')
     else
       $(".new-message-body").val($editableMessageBody.text())
-      $(".new-message-body").parent('form').trigger('submit.rails')
+      $(".new-message-body").closest('form').trigger('submit.rails')
       $(".new-message-body").empty()
       $editableMessageBody.html('')
                     
@@ -29,6 +29,10 @@ $(document).on 'turbolinks:load', ->
   $newEditableMessage.on "keydown", (event) ->
     if event.which == 13
       onSubmit('top', event)
+
+  $msgSubmitButton = $("#send-btn")
+  $msgSubmitButton.on "click", (event) ->
+    onSubmit('top', event)
 
     
     
