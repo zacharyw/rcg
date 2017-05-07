@@ -7,6 +7,6 @@ class MessageBroadcaster
   end
   
   def perform
-    MessagesChannel.broadcast_to conversation, ActiveModelSerializers::SerializableResource.new(message).to_json
+    MessagesChannel.broadcast_to conversation, MessageSerializer.new(message).to_json
   end
 end

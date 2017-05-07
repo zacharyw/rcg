@@ -9,7 +9,7 @@ class Conversation < ApplicationRecord
 
   private
   def broadcast
-    ConversationChannel.broadcast_to 'conversations', ActiveModelSerializers::SerializableResource.new(self).to_json
+    ConversationChannel.broadcast_to 'conversations', ConversationSerializer.new(self).to_json
   end
 
   def at_least_one_message

@@ -43,11 +43,11 @@ describe Conversation, type: :model do
 
   describe '#broadcast' do
     let(:conversation) { FactoryGirl.build(:conversation) }
-    let(:serialized_conversation) { double(ActiveModelSerializers::SerializableResource) }
-    let(:json) { double }
+    let(:serialized_conversation) { double(ConversationSerializer) }
+    let(:json) { conversation.to_json }
     
     it 'Broadcasts after create' do
-      expect(ActiveModelSerializers::SerializableResource).to receive(:new).with(conversation).and_return(serialized_conversation)
+      expect(ConversationSerializer).to receive(:new).with(conversation).and_return(serialized_conversation)
       expect(serialized_conversation).to receive(:to_json).and_return json
       expect(ConversationChannel).to receive(:broadcast_to).with('conversations', json)
       
