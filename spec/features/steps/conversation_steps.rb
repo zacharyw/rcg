@@ -4,8 +4,18 @@ module ConversationSteps
   end
 
   def post_conversation(text)
+    set_text(text)
+    click_on "Post"
+  end
+
+  def send_message(text)
+    set_text(text)
+  end
+
+  private
+  def set_text(text)
     body = find(".editable-body")
     body.set(text)
-    click_on "Post"
+    body.native.send_keys(:return)
   end
 end

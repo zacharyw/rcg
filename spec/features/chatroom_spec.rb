@@ -1,6 +1,8 @@
 require 'rails_helper'
 
 feature "Chatroom", js: true do
+  include ConversationSteps
+  
   let!(:conversation) { FactoryGirl.create(:conversation) }
   let(:serialized_conversation) { ConversationSerializer.new(conversation) }
   let(:user) { FactoryGirl.create(:user) }
@@ -14,8 +16,7 @@ feature "Chatroom", js: true do
 
     expect(page).to have_content conversation.messages.first.body
 
-    fill_in 'new-message-body', with: 'New message'
-    click_on 'Send'
+    send_message "New message"
 
     expect(page).to have_content "#{user.username}: New message"
   end
