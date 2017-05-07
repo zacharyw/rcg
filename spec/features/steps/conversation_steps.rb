@@ -4,7 +4,7 @@ module ConversationSteps
   end
 
   def post_conversation(text)
-    body = find("#editable-body")
+    body = find(".editable-body")
     body.set(text)
     click_on "Post"
   end

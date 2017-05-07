@@ -14,7 +14,7 @@ feature "Chatroom", js: true do
 
     expect(page).to have_content conversation.messages.first.body
 
-    fill_in 'message_body', with: 'New message'
+    fill_in 'new-message-body', with: 'New message'
     click_on 'Send'
 
     expect(page).to have_content "#{user.username}: New message"

@@ -47,7 +47,7 @@
   @include justify-content(flex-end);
 }
 
-p {
+.message {
   @include flexbox();
 }
 
