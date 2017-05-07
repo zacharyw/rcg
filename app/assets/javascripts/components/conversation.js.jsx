@@ -1,4 +1,8 @@
 class Conversation extends React.Component {
+  createLink(link) {
+    return {__html: link}
+  }
+  
   render() {
     const conversation = this.props.conversation;
     return (
@@ -8,8 +12,7 @@ class Conversation extends React.Component {
             {conversation.author} <span className="text-muted">{conversation.time_ago} ago</span>
           </div>
           <div className="panel-body">
-            <div className="conversation-body">
-              {conversation.preview}
+            <div className="conversation-body" dangerouslySetInnerHTML={this.createLink(conversation.show_link)}>
             </div>
           </div>
         </div>

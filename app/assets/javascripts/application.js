@@ -14,6 +14,7 @@
 //= require bootstrap-sprockets
 //= require jquery_ujs
 //= require turbolinks
+//= require conversation_resize
 //= require react
 //= require react_ujs
 //= require components

@@ -1,9 +1,10 @@
 class ConversationSerializer < ActiveModel::Serializer
   include ActionView::Helpers
+  include Rails.application.routes.url_helpers
 
-  attributes :id, :preview, :author, :time_ago
+  attributes :id, :preview, :author, :time_ago, :show_link
 
-  delegate :user, :messages, :created_at, :id, to: :conversation
+  delegate :user, :messages, :created_at, :id, to: :object
   
   def preview
     truncate(messages.first.body, length: 300)
@@ -17,7 +18,7 @@ class ConversationSerializer < ActiveModel::Serializer
     distance_of_time_in_words(created_at, Time.now)
   end
 
-  def conversation
-    object
+  def show_link
+    link_to preview, conversation_path(object)
   end
 end

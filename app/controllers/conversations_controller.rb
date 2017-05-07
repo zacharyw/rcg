@@ -5,7 +5,7 @@ class ConversationsController < ApplicationController
   end
 
   def create
-    @new_conversation = NewConversation.new(conversation_params)
+    @new_conversation = NewConversation.new(body: conversation_params[:body], user: current_user)
 
     respond_to do |format|
       if @new_conversation.valid?
@@ -24,6 +24,12 @@ class ConversationsController < ApplicationController
   end
 
   def show
+    @conversation = Conversation.where(id: params[:id]).includes(messages: [:user]).first
+
+    if @conversation.nil?
+      flash.error = 'Conversation does not exist.'
+      redirect_to :index
+    end
   end
 
   def destroy

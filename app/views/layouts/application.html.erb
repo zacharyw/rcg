@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Rcg</title>
+    <title>RCG</title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -13,7 +13,7 @@
   <nav class="navbar navbar-inverse navbar-static-top">
     <div class="container-fluid">
       <div class="navbar-header">
-        <%= link_to 'Rare Candy Gaming', root_url, class: "navbar-brand" %>
+        <%= link_to 'RCG', root_url, class: "navbar-brand" %>
       </div>
       <div class="collape navbar-collapse">
           <% if user_signed_in? %>
@@ -36,7 +36,7 @@
     </div>
   </nav>
     <div class="container-fluid">
-      <div class="row">
+      <div class="row-fluid">
         <% if notice %>
           <p class="alert alert-info"><%= notice %></p>
         <% end %>

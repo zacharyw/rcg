@@ -1,2 +1,19 @@
-<h1>Conversations#show</h1>
-<p>Find me in app/views/conversations/show.html.erb</p>
+<div class="conversation-container">
+  <%=
+    react_component(
+        'MessageList',
+        messages: ActiveModelSerializers::SerializableResource.new(@conversation.messages),
+        conversation_id: @conversation.id
+    )
+  %>
+
+  <div id="new-message-form">
+    <div class="panel panel-primary">
+      <%= form_for Message.new, remote: true, html: { class: 'form-inline' } do |f| %>
+        <%= render partial: 'new_message', locals: { css_class: 'new-message-editable' }%>
+        <%= f.text_area :body, class: 'hidden new-message-body' %>
+        <%= f.hidden_field :conversation_id, value: @conversation.id %>
+      <% end %>
+    </div>
+  </div>
+</div>

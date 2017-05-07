@@ -1,20 +1,23 @@
-<div class="row">
+<div class="row-fluid">
   <% if user_signed_in? %>
     <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
       <div class="panel panel-primary">
         <%= form_for @new_conversation, as: :conversation, remote: true, url: { action: 'create' } do |f| %>
-          <div class="panel-body">
-            <div contenteditable="true" id="editable-body">
-              <%= @new_conversation.default_body %>
-            </div>
-            <%= f.text_area :body, class: 'hidden' %>
-          </div>
+          <%= render partial: 'new_message', locals: {css_class: 'new-conversation-editable' } %>
+          <%= f.text_area :body, class: 'hidden new-message-body' %>
           <div class="panel-footer clearfix">
-            <%= f.submit('Post', class: 'btn btn-success pull-right', id: 'new-conversation-submit') %>
+            <%= f.submit('Post', class: 'btn btn-success pull-right', id: 'new-message-submit') %>
           </div>
         <% end %>
       </div>
     </div>
   <% end %>
   <%= react_component('ConversationList', conversations: ActiveModelSerializers::SerializableResource.new(@conversations)) %>
+
+  <% if @conversations.blank? && !user_signed_in? %>
+    <p>
+      No conversations exist yet - <%= link_to 'sign up', new_user_registration_path %>
+      or <%= link_to 'login', new_user_session_path %> and create the first one!
+    </p>
+  <% end %>
 </div>

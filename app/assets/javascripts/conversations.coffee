@@ -1,19 +1,34 @@
-$ ->
-  $newConversationBody = $("#editable-body")
+$(document).on 'turbolinks:load', ->
+  $editableMessageBody = $(".editable-body")
+  $editableMessageBody.focus()
 
-  $newConversationBody.on "click", (event) ->
-    $newConversationBody.tooltip('destroy')
+  $editableMessageBody.on "click", (event) ->
+    $editableMessageBody.tooltip('destroy')
 
-    if $newConversationBody.text().trim() == 'Write something...'
-      $newConversationBody.empty()
+  $editableMessageBody.on "keydown", (event) ->
+    $editableMessageBody.tooltip('destroy')
 
-  $submitButton = $("#new-conversation-submit")
-  $submitButton.on "click", (event) ->
-    if $newConversationBody.text().trim().length == 0
+  onSubmit = (placement, event) ->
+    event.preventDefault()
+
+    if $editableMessageBody.text().trim().length == 0
       event.preventDefault()
-      $newConversationBody.tooltip({placement: 'bottom', title: 'Your conversation appears to be blank. Please write something or attach a file.'})
-      $newConversationBody.tooltip('show')
+      $editableMessageBody.tooltip({placement: placement, title: 'Your message appears to be blank. Please write something or attach a file.'})
+      $editableMessageBody.tooltip('show')
     else
-      $("#conversation_body").val($newConversationBody.text())
-      $newConversationBody.text('Write something...')
-      $("#conversation_body").empty()
+      $(".new-message-body").val($editableMessageBody.text())
+      $(".new-message-body").parent('form').trigger('submit.rails')
+      $(".new-message-body").empty()
+      $editableMessageBody.html('')
+                    
+  $submitButton = $("#new-message-submit")
+  $submitButton.on "click", (event) ->
+    onSubmit('bottom', event)
+
+  $newEditableMessage = $(".new-message-editable")
+  $newEditableMessage.on "keydown", (event) ->
+    if event.which == 13
+      onSubmit('top', event)
+
+    
+    
