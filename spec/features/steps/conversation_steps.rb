@@ -10,12 +10,12 @@ module ConversationSteps
 
   def send_message(text)
     set_text(text)
+    body.native.send_keys(:return)
   end
 
   private
   def set_text(text)
     body = find(".editable-body")
     body.set(text)
-    body.native.send_keys(:return)
   end
 end
