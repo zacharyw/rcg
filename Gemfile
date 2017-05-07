@@ -77,6 +77,7 @@ end
 
 group :production do
   gem 'pg'
+  gem 'redis', '~> 3.0'
 end
 
 gem 'devise'
