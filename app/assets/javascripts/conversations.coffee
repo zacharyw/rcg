@@ -1,38 +1,29 @@
-$(document).on 'turbolinks:load', ->
-  $editableMessageBody = $(".editable-body")
-  $editableMessageBody.focus()
+document.addEventListener 'turbolinks:load', ->
+  editableMessageBody = $.one(".editable-body")
 
-  $editableMessageBody.on "click", (event) ->
-    $editableMessageBody.tooltip('destroy')
+  if editableMessageBody.length == 0
+    return
 
-  $editableMessageBody.on "keydown", (event) ->
-    $editableMessageBody.tooltip('destroy')
+  editableMessageBody.focus()
 
-  onSubmit = (placement, event) ->
+  onSubmit = (event) ->
     event.preventDefault()
+    if editableMessageBody.textContent.trim().length != 0
+      $.one(".new-message-body").value = editableMessageBody.textContent
+      trigger($.one('.message-form'), 'submit')
+      $.one(".new-message-body").value = ''
+      editableMessageBody.innerHTML = ''
 
-    if $editableMessageBody.text().trim().length == 0
-      event.preventDefault()
-      $editableMessageBody.tooltip({placement: placement, title: 'Your message appears to be blank. Please write something or attach a file.'})
-      $editableMessageBody.tooltip('show')
-    else
-      $(".new-message-body").val($editableMessageBody.text())
-      $(".new-message-body").closest('form').trigger('submit.rails')
-      $(".new-message-body").empty()
-      $editableMessageBody.html('')
-                    
-  $submitButton = $("#new-message-submit")
-  $submitButton.on "click", (event) ->
-    onSubmit('bottom', event)
+  submitButton = $.one("#new-message-submit")
+  submitButton?.addEventListener "click", onSubmit
 
-  $newEditableMessage = $(".new-message-editable")
-  $newEditableMessage.on "keydown", (event) ->
+  newEditableMessage = $.one(".new-message-editable")
+  newEditableMessage?.addEventListener "keydown", (event) ->
     if event.which == 13
-      onSubmit('top', event)
+      onSubmit(event)
 
-  $msgSubmitButton = $("#send-btn")
-  $msgSubmitButton.on "click", (event) ->
-    onSubmit('top', event)
+  msgSubmitButton = $.one("#send-btn")
+  msgSubmitButton?.addEventListener "click", onSubmit
 
     
     
