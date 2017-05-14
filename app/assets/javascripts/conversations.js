@@ -3,7 +3,7 @@ var resizeTimer = null;
 function resizeMessages() {
   var form = $.one("#new-message-form");
 
-  if(form === undefined) {
+  if(!form) {
     return;
   }
 
@@ -30,7 +30,7 @@ document.addEventListener('turbolinks:load', function() {
 
   var editableMessageBody = $.one(".editable-body");
 
-  if(editableMessageBody) {
+  if(!editableMessageBody) {
     return;
   }
 
