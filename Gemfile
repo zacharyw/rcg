@@ -53,6 +53,8 @@ gem 'bootstrap-sass', '~> 3.3.6'
 gem 'bootstrap3_form_builder', '1.0.5'
 gem 'therubyracer', platforms: :ruby
 
+gem 'webpacker'
+
 group :development, :test do
   gem 'rspec-rails', '~> 3.5.0.beta3'
   gem 'factory_girl_rails'
