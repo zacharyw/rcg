@@ -3,7 +3,7 @@ var resizeTimer = null;
 function resizeMessages() {
   var form = $.one("#new-message-form");
 
-  if(!form) {
+  if(form === undefined) {
     return;
   }
 
