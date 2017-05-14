@@ -12,7 +12,7 @@
       </div>
     </div>
   <% end %>
-  <%= react_component('ConversationList', conversations: ActiveModelSerializers::SerializableResource.new(@conversations)) %>
+  <%= react_component('conversation_list', conversations: ActiveModelSerializers::SerializableResource.new(@conversations)) %>
 
   <% if @conversations.blank? && !user_signed_in? %>
     <p>

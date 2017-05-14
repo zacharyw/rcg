@@ -1,7 +1,7 @@
 <div class="conversation-container">
   <%=
     react_component(
-        'MessageList',
+        'message_list',
         messages: ActiveModelSerializers::SerializableResource.new(@conversation.messages),
         conversation_id: @conversation.id
     )

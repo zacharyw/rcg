@@ -1,3 +1,5 @@
+import React from 'react';
+
 class Conversation extends React.Component {
   createLink(link) {
     return {__html: link}
@@ -20,3 +22,5 @@ class Conversation extends React.Component {
     );
   }
 }
+
+export default Conversation;

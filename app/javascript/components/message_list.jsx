@@ -1,3 +1,7 @@
+import React from 'react';
+import Message from 'components/message';
+import {resizeMessages} from 'conversations';
+
 class MessageList extends React.Component {
   constructor(props) {
     super(props);
@@ -45,3 +49,5 @@ class MessageList extends React.Component {
     );
   }
 }
+
+export default MessageList;
