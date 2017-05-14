@@ -3,7 +3,7 @@ class Message extends React.Component {
     const message = this.props.message;
     return (
       <p id={message.id} className="message">
-        <strong>{message.author}:</strong> {message.body}
+        <strong>{message.author}:</strong>&nbsp;{message.body}
       </p>
     );
   }

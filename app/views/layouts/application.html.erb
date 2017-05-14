@@ -7,8 +7,13 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
 
+    <script>
+      // https://github.com/finom/bala
+      // Provides $(selector) syntax with no jquery
+      $=((a,b,c)=>(c=((d,e,f)=>(f=Object.create(c.fn),d&&f.push(...d.dispatchEvent?[d]:""+d===d?/</.test(d)?((e=a.createElement(e)).innerHTML=d,e.children):e?(e=c(e)[0])?e[b](d):f:a[b](d):d),f)),c.fn=[],c.one=((a,b)=>c(a,b)[0]),c))(document,"querySelectorAll");
+    </script>
+  </head>
   <body>
   <nav class="navbar navbar-inverse navbar-static-top" role="navigation">
     <div class="container-fluid">
