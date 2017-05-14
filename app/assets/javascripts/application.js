@@ -10,9 +10,8 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require rails-ujs
 //= require turbolinks
-//= require conversation_resize
+//= require rails-ujs
 //= require react
 //= require react_ujs
 //= require components
