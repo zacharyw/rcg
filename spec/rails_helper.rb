@@ -81,9 +81,8 @@ RSpec.configure do |config|
   end
 end
 
-Capybara.configure do |config|
-  config.server = :puma
-end
+Capybara.server = :puma
+Capybara.server_port = 3030
 
 Capybara.register_driver :chrome do |app|
   Capybara::Selenium::Driver.new(app, :browser => :chrome)

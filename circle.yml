@@ -4,4 +4,4 @@ machine:
 
 test:
   pre:
-    - bin/webpack-dev-server
+    - bin/webpack
