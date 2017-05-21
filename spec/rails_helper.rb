@@ -46,6 +46,11 @@ RSpec.configure do |config|
   config.use_transactional_fixtures = true
   config.order = "random"
 
+  # TODO: This might not be necessary after https://github.com/rails/webpacker/pull/360
+  config.before(:suite) do
+    `bin/webpack`
+  end
+
   config.before(:each) do
     Rails.cache.clear
   end
