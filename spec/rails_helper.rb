@@ -6,7 +6,6 @@ abort("The Rails environment is running in production mode!") if Rails.env.produ
 require 'spec_helper'
 require 'rspec/rails'
 require 'capybara-screenshot/rspec'
-require "transactional_capybara/rspec"
 
 Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
 Dir[Rails.root.join("spec/features/steps/**/*.rb")].each {|f| require f}
@@ -47,18 +46,11 @@ RSpec.configure do |config|
   config.use_transactional_fixtures = true
   config.order = "random"
 
-  config.before(:suite) do
-    DatabaseCleaner[:active_record].strategy = :transaction
-    DatabaseCleaner.clean_with :truncation
-  end
-
   config.before(:each) do
-    DatabaseCleaner.start
     Rails.cache.clear
   end
 
   config.append_after(:each) do
-    DatabaseCleaner.clean
     Timecop.return
   end
 
@@ -104,5 +96,5 @@ Capybara::Screenshot.register_driver(:chrome) do |driver, path|
 end
 
 def log_in_as(user)
-  login_as(user, :scope => :user, :run_callbacks => false)
+  login_as(user, :scope => :user)
 end

@@ -80,7 +80,7 @@ group :production do
   gem 'redis'
 end
 
-gem 'devise', git: 'https://github.com/plataformatec/devise.git', branch: 'master'
+gem 'devise', '~> 4.3.0'
 gem 'pundit'
 
 gem 'react-rails', '~> 2.2.0'

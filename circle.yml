@@ -4,4 +4,4 @@ machine:
 
 test:
   pre:
-    - RAILS_ENV=test ./bin/rails webpacker:compile
+    - bin/webpack-dev-server
