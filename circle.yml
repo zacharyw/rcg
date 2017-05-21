@@ -4,4 +4,4 @@ machine:
 
 compile:
   override:
-    - ./bin/webpack
+    - RAILS_ENV=test ./bin/webpack
