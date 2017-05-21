@@ -4,4 +4,5 @@ machine:
 
 compile:
   override:
+    - yarn install
     - RAILS_ENV=test ./bin/rails webpacker:compile
