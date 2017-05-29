@@ -8,6 +8,7 @@
     "babel-polyfill": "^6.23.0",
     "babel-preset-env": "^1.5.1",
     "babel-preset-react": "^6.24.1",
+    "bootstrap-sass": "^3.3.7",
     "bootstrap.native": "^2.0.10",
     "compression-webpack-plugin": "^0.4.0",
     "css-loader": "^0.28.3",
@@ -28,6 +29,7 @@
     "resolve-url-loader": "^2.0.2",
     "sass-loader": "^6.0.5",
     "style-loader": "^0.18.1",
+    "turbolinks": "^5.0.3",
     "webpack": "^2.6.1",
     "webpack-manifest-plugin": "^1.1.0",
     "webpack-merge": "^4.1.0"

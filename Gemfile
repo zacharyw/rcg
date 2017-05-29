@@ -83,5 +83,5 @@ end
 gem 'devise', '~> 4.3.0'
 gem 'pundit'
 
-gem 'react-rails', '~> 2.2.0'
+gem 'react-rails'
 gem 'active_model_serializers', '~> 0.10.0'
