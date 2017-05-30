@@ -5,6 +5,8 @@
     <title>RCG</title>
     <%= csrf_meta_tags %>
 
+    <%= stylesheet_pack_tag 'application' %>
+
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 
     <script>
@@ -49,6 +51,5 @@
       <%= yield %>
     </div>
   </body>
-  <%= javascript_pack_tag 'application' %>
-  <%= stylesheet_pack_tag 'application' %>
 </html>
+<%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
