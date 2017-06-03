@@ -1,5 +1,9 @@
-@import "./variables";
+@import "./_variables";
+
+@import "./theme/_variables";
 @import "~bootstrap-sass/assets/stylesheets/_bootstrap.scss";
+@import "./theme/_bootswatch";
+
 @import "./conversations";
 
 .center {

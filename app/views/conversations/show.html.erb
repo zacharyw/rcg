@@ -15,7 +15,7 @@
         </div>
         <%= f.text_area :body, class: 'hidden new-message-body' %>
         <%= f.hidden_field :conversation_id, value: @conversation.id %>
-        <%= f.submit 'Send', class: 'btn btn-primary', id: 'send-btn' %>
+        <%= f.submit 'Send', class: 'btn btn-success', id: 'send-btn' %>
       </div>
     <% end %>
   </div>
