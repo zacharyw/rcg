@@ -1,3 +1,6 @@
+import React from 'react';
+import Conversation from 'components/conversation';
+
 class ConversationList extends React.Component {
   constructor(props) {
     super(props);
@@ -35,3 +38,5 @@ class ConversationList extends React.Component {
     });
   }
 }
+
+export default ConversationList;

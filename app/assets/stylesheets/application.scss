@@ -12,15 +12,3 @@
  * It is generally better to create a new file per style scope.
  *
  */
-
-@import "bootstrap-sprockets";
-@import "bootstrap";
-@import "flex";
-@import "conversations";
-
-.center {
-  @include make-sm-column(6);
-  @include make-sm-column-offset(3);
-  @include make-md-column(4);
-  @include make-md-column-offset(4);
-}

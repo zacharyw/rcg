@@ -1,6 +1,8 @@
+import { outerHeight, trigger } from './util';
+
 var resizeTimer = null;
 
-function resizeMessages() {
+export function resizeMessages() {
   var form = $.one("#new-message-form");
 
   if(!form) {

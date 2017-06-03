@@ -1,0 +1,9 @@
+@import "~bootstrap-sass/assets/stylesheets/_bootstrap.scss";
+@import "./conversations";
+
+.center {
+  @include make-sm-column(6);
+  @include make-sm-column-offset(3);
+  @include make-md-column(4);
+  @include make-md-column-offset(4);
+}

@@ -1,0 +1,11 @@
+machine:
+  node:
+    version: 6.10.3
+
+dependencies:
+  post:
+    - yarn install
+
+compile:
+  override:
+    - RAILS_ENV=test ./bin/rails webpacker:compile

@@ -1,15 +1,3 @@
-GIT
-  remote: https://github.com/plataformatec/devise.git
-  revision: a62faa2c8258ba1c35fe84e147f42c35eccccb8a
-  branch: master
-  specs:
-    devise (4.2.1)
-      bcrypt (~> 3.0)
-      orm_adapter (~> 0.1)
-      railties (>= 4.1.0, < 5.2)
-      responders
-      warden (~> 1.2.3)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -95,6 +83,12 @@ GEM
     debase (0.2.1)
       debase-ruby_core_source
     debase-ruby_core_source (0.9.9)
+    devise (4.3.0)
+      bcrypt (~> 3.0)
+      orm_adapter (~> 0.1)
+      railties (>= 4.1.0, < 5.2)
+      responders
+      warden (~> 1.2.3)
     diff-lcs (1.3)
     erubi (1.6.0)
     execjs (2.7.0)
@@ -161,7 +155,7 @@ GEM
     puma (3.8.2)
     pundit (1.1.0)
       activesupport (>= 3.0.0)
-    rack (2.0.2)
+    rack (2.0.3)
     rack-test (0.6.3)
       rack (>= 1.0)
     rails (5.1.1)
@@ -275,6 +269,10 @@ GEM
       activemodel (>= 5.0)
       bindex (>= 0.4.0)
       railties (>= 5.0)
+    webpacker (2.0)
+      activesupport (>= 4.2)
+      multi_json (~> 1.2)
+      railties (>= 4.2)
     websocket (1.2.4)
     websocket-driver (0.6.5)
       websocket-extensions (>= 0.1.0)
@@ -295,7 +293,7 @@ DEPENDENCIES
   capybara-screenshot
   database_cleaner
   debase
-  devise!
+  devise (~> 4.3.0)
   factory_girl_rails
   guard-rspec
   jbuilder (~> 2.5)
@@ -304,7 +302,7 @@ DEPENDENCIES
   puma (~> 3.7)
   pundit
   rails (~> 5.1.0)
-  react-rails (~> 2.2.0)
+  react-rails
   redis
   rspec-rails (~> 3.5.0.beta3)
   ruby-debug-ide
@@ -320,6 +318,7 @@ DEPENDENCIES
   tzinfo-data
   uglifier (>= 1.3.0)
   web-console (>= 3.3.0)
+  webpacker
 
 BUNDLED WITH
    1.12.5
