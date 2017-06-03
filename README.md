@@ -6,6 +6,8 @@
 2. `bundle install`
 3. `brew install chromedriver`
 4. `rspec spec` All specs should pass
+5. Start server: `foreman start`
+  * Navigate browser to http://localhost:3000/
 
 ## Description
 
