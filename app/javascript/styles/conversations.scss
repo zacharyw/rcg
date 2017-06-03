@@ -75,4 +75,9 @@
   }
 }
 
-
+@media (max-width: $screen-xs-max) {
+  .conversation-col {
+    padding: 0;
+    margin: 0;
+  }
+}
