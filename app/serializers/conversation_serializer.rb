@@ -19,6 +19,6 @@ class ConversationSerializer < ActiveModel::Serializer
   end
 
   def show_link
-    link_to preview, conversation_path(object)
+    link_to 'Open', conversation_path(object), id: "conversation-#{id}-link"
   end
 end

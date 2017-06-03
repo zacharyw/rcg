@@ -46,6 +46,10 @@ RSpec.configure do |config|
   config.use_transactional_fixtures = true
   config.order = "random"
 
+  config.before(:suite) do
+    `bin/webpack`
+  end
+
   config.before(:each) do
     Rails.cache.clear
   end

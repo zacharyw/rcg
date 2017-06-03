@@ -14,7 +14,12 @@ class Conversation extends React.Component {
             {conversation.author} <span className="text-muted">{conversation.time_ago} ago</span>
           </div>
           <div className="panel-body">
-            <div className="conversation-body" dangerouslySetInnerHTML={this.createLink(conversation.show_link)}>
+            <div className="conversation-body">
+              {conversation.preview}
+            </div>
+          </div>
+          <div className="panel-footer clearfix">
+            <div className="pull-right" dangerouslySetInnerHTML={this.createLink(conversation.show_link)}>
             </div>
           </div>
         </div>

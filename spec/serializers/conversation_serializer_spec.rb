@@ -23,7 +23,7 @@ describe ConversationSerializer do
           preview: truncate(body, length: 300),
           author: conversation.user.username,
           time_ago: distance_of_time_in_words(conversation.created_at, Time.now),
-          show_link: link_to(serializer.preview, conversation_path(conversation))
+          show_link: link_to('Open', conversation_path(conversation), id: "conversation-#{conversation.id}-link")
       }
     end
 

@@ -12,7 +12,7 @@ feature "Chatroom", js: true do
     
     visit conversations_path
 
-    click_link serialized_conversation.preview
+    click_link "conversation-#{conversation.id}-link"
 
     expect(page).to have_content conversation.messages.first.body
 
