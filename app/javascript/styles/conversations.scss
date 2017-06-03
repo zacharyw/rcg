@@ -1,5 +1,22 @@
-.editable-body {
-  overflow: auto;
+#conversation-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.conversation-col {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 2;
+}
+
+.conversation-col .panel, .conversation-col .panel form {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 2;
+}
+
+.conversation-col .panel .panel-body {
+  flex-grow: 2;
 }
 
 .editable-body:empty:before {
@@ -19,8 +36,7 @@
 
 .conversation-body {
   min-height: 2em;
-  max-height: 7.6em;
-  overflow: hidden;
+  word-wrap: break-word;
 }
 
 .editable-body:focus {

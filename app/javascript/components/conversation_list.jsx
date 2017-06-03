@@ -22,7 +22,9 @@ class ConversationList extends React.Component {
       <Conversation conversation={conversation} key={conversation.id}/>
     );
     return (
-      <div>
+      <div id="conversation-list">
+        <div className="conversation-col col-xs-12 col-sm-6 col-md-4 col-lg-3" dangerouslySetInnerHTML={{__html: this.props.new_conversation_form}}>
+        </div>
         {conversationList}
       </div>
     );
