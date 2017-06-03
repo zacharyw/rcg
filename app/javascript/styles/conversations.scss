@@ -9,7 +9,7 @@
 }
 
 .new-conversation-editable {
-  height: 8.7em;
+  min-height: 3em;
 }
 
 .new-message-editable {
@@ -18,7 +18,8 @@
 }
 
 .conversation-body {
-  height: 7.6em;
+  min-height: 2em;
+  max-height: 7.6em;
   overflow: hidden;
 }
 
