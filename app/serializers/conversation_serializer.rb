@@ -7,7 +7,7 @@ class ConversationSerializer < ActiveModel::Serializer
   delegate :user, :messages, :created_at, :id, to: :object
   
   def preview
-    truncate(messages.first.body, length: 300)
+    truncate(messages.first.body, length: 300, escape: false)
   end
 
   def author
