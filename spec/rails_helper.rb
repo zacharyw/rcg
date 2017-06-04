@@ -47,7 +47,7 @@ RSpec.configure do |config|
   config.order = "random"
 
   config.before(:suite) do
-    `bin/webpack`
+    Webpacker.compile
   end
 
   config.before(:each) do
