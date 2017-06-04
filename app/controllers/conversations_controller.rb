@@ -26,7 +26,7 @@ class ConversationsController < ApplicationController
   end
 
   def show
-    @conversation = Conversation.where(id: params[:id]).includes(messages: [:user]).first
+    @conversation = ConversationOpener.new(id: params[:id], user: current_user).perform
 
     if @conversation.nil?
       flash.error = 'Conversation does not exist.'

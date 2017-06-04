@@ -6,6 +6,7 @@ class User < ApplicationRecord
 
   has_many :conversations
   has_many :messages
+  has_many :read_conversations
 
   attr_accessor :login
 
