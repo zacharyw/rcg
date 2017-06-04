@@ -1,10 +1,7 @@
 import React from 'react';
+import ConversationOpenLink from "./conversation_open_link";
 
 class Conversation extends React.Component {
-  createLink(link) {
-    return {__html: link}
-  }
-  
   render() {
     const conversation = this.props.conversation;
     return (
@@ -19,7 +16,12 @@ class Conversation extends React.Component {
             </div>
           </div>
           <div className="panel-footer clearfix">
-            <div className="pull-right" dangerouslySetInnerHTML={this.createLink(conversation.show_link)}>
+            <div className="pull-right">
+              <ConversationOpenLink
+                conversation_id={this.props.conversation.id}
+                count={this.props.conversation.new_count}
+                url={this.props.conversation.url}
+              />
             </div>
           </div>
         </div>

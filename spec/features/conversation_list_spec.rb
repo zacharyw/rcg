@@ -32,7 +32,7 @@ feature "Conversations list", js: true do
     expect(page).to have_content "#{user.username} less than a minute ago"
     within "#conversation_#{Conversation.last.id}" do
       expect(page).to have_content "Testing new convo"
-      expect(page).to have_content "Open (1 new)"
+      expect(page).to have_content "Open 1"
     end
 
     click_link "conversation-#{Conversation.last.id}-link"
@@ -43,7 +43,7 @@ feature "Conversations list", js: true do
 
     within "#conversation_#{Conversation.last.id}" do
       expect(page).to have_content "Testing new convo"
-      expect(page).to have_content "Open (0 new)"
+      expect(page).to have_content "Open 0"
     end
   end
 end

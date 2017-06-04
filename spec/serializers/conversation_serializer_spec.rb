@@ -19,11 +19,12 @@ describe ConversationSerializer do
   describe '#as_json' do
     let(:expected) do
       {
-          id: conversation.id,
-          preview: truncate(body, length: 300),
-          author: conversation.user.username,
-          time_ago: distance_of_time_in_words(conversation.created_at, Time.now),
-          show_link: link_to('Open (1 new)', conversation_path(conversation), id: "conversation-#{conversation.id}-link")
+        id: conversation.id,
+        preview: truncate(body, length: 300),
+        author: conversation.user.username,
+        time_ago: distance_of_time_in_words(conversation.created_at, Time.now),
+        url: conversation_path(conversation),
+        new_count: 1
       }
     end
 
