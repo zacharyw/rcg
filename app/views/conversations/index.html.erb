@@ -2,7 +2,7 @@
   <%=
     react_component(
       'conversation_list',
-      conversations: ActiveModelSerializers::SerializableResource.new(@conversations),
+      conversations: ActiveModel::Serializer::CollectionSerializer.new(@conversations, each_serializer: ConversationSerializer, scope: current_user),
       new_conversation_form: render(partial: 'new_conversation')
     )
   %>

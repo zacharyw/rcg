@@ -32,6 +32,18 @@ feature "Conversations list", js: true do
     expect(page).to have_content "#{user.username} less than a minute ago"
     within "#conversation_#{Conversation.last.id}" do
       expect(page).to have_content "Testing new convo"
+      expect(page).to have_content "Open (1 new)"
+    end
+
+    click_link "conversation-#{Conversation.last.id}-link"
+
+    expect(page).to have_content "#{user.username}: Testing new convo"
+
+    visit conversations_path
+
+    within "#conversation_#{Conversation.last.id}" do
+      expect(page).to have_content "Testing new convo"
+      expect(page).to have_content "Open (0 new)"
     end
   end
 end

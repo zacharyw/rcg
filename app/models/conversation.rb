@@ -1,6 +1,7 @@
 class Conversation < ApplicationRecord
   belongs_to :user
   has_many :messages
+  has_many :read_conversations
 
   validates :user, presence: true
   validate :at_least_one_message

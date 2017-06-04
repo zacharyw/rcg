@@ -19,6 +19,12 @@ class ConversationSerializer < ActiveModel::Serializer
   end
 
   def show_link
-    link_to 'Open', conversation_path(object), id: "conversation-#{id}-link"
+    last_read = scope.read_conversations.where(conversation: object).first unless scope.nil?
+
+    count = object.messages.count if last_read.nil?
+
+    count = object.messages.where("created_at > :read_at", {read_at: last_read.read_at}).count if count.nil?
+
+    link_to "Open (#{count} new)", conversation_path(object), id: "conversation-#{id}-link"
   end
 end
