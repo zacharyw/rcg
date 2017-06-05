@@ -3,7 +3,8 @@
     react_component(
         'message_list',
         messages: ActiveModelSerializers::SerializableResource.new(@conversation.messages),
-        conversation_id: @conversation.id
+        conversation_id: @conversation.id,
+        current_user_id: current_user.id
     )
   %>
 
@@ -19,4 +20,9 @@
       </div>
     <% end %>
   </div>
+</div>
+<div style="display: none;">
+  <%= form_with url: :mark_read, remote: true, html: { id: 'mark-read-form' } do |form| %>
+    <%= form.text_field :conversation_id, value: @conversation.id %>
+  <% end %>
 </div>

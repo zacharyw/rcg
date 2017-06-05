@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   resources :conversations, except: :edit
+  post '/conversations/mark_read', to: 'conversations#mark_read', as: 'mark_read'
 
   resources :messages, only: :create
 

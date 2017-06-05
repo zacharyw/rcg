@@ -37,6 +37,10 @@ class ConversationsController < ApplicationController
   def destroy
   end
 
+  def mark_read
+    ConversationReadMarker.new(user: current_user, conversation: Conversation.find(params[:conversation_id])).perform
+  end
+
   private
   def conversation_params
     params.require(:conversation).permit(:body)

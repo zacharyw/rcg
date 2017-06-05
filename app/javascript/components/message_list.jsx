@@ -1,11 +1,12 @@
 import React from 'react';
 import Message from 'components/message';
 import {resizeMessages} from 'conversations';
+import {trigger} from '../util';
 
 class MessageList extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {messages: props.messages, conversation_id: props.conversation_id};
+    this.state = {messages: props.messages};
   }
 
   componentDidMount() {
@@ -17,9 +18,15 @@ class MessageList extends React.Component {
     message = JSON.parse(message);
     // Append new message to end of list
     this.setState({
-      messages: this.state.messages.concat([message]),
-      conversation_id: this.state.conversation_id
+      messages: this.state.messages.concat([message])
     });
+    MessageList.markRead();
+  }
+
+  static markRead() {
+    if(!document.hidden) {
+      trigger($.one('#mark-read-form'), 'submit');
+    }
   }
 
   render() {
@@ -37,7 +44,7 @@ class MessageList extends React.Component {
     App.cable.subscriptions.create(
       {
         channel: "MessagesChannel",
-        id: this.state.conversation_id
+        id: this.props.conversation_id
       },
       {
         received: function (message) {

@@ -23,12 +23,6 @@ class ConversationSerializer < ActiveModel::Serializer
   end
 
   def new_count
-    last_read = scope.read_conversations.where(conversation: object).first unless scope.nil?
-
-    count = object.messages.count if last_read.nil?
-
-    count = object.messages.where("created_at > :read_at", {read_at: last_read.read_at}).count if count.nil?
-
-    count
+    NewMessageCounter.new(conversation: object, user: scope).perform
   end
 end

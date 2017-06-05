@@ -1,22 +1,22 @@
 import { outerHeight, trigger } from './util';
 
-var resizeTimer = null;
+let resizeTimer = null;
 
 export function resizeMessages() {
-  var form = $.one("#new-message-form");
+  const form = $.one("#new-message-form");
 
   if(!form) {
     return;
   }
 
-  var height = window.innerHeight - outerHeight(form) - outerHeight($.one('.navbar-static-top'));
+  let height = window.innerHeight - outerHeight(form) - outerHeight($.one('.navbar-static-top'));
 
-  var alert = $.one('.alert');
+  const alert = $.one('.alert');
   if(alert) {
     height = height - outerHeight(alert);
   }
 
-  var messages = $.one(".messages");
+  const messages = $.one(".messages");
   if(height !== messages.offsetHeight) {
     messages.style.height = height + "px";
   }
@@ -30,7 +30,7 @@ window.addEventListener('resize', function() {
 document.addEventListener('turbolinks:load', function() {
   resizeMessages();
 
-  var editableMessageBody = $.one(".editable-body");
+  const editableMessageBody = $.one(".editable-body");
 
   if(!editableMessageBody) {
     return;
@@ -38,7 +38,7 @@ document.addEventListener('turbolinks:load', function() {
 
   editableMessageBody.focus();
 
-  var onSubmit = function(event) {
+  const onSubmit = function(event) {
     event.preventDefault();
     if(editableMessageBody.textContent.trim().length !== 0) {
       $.one(".new-message-body").value = editableMessageBody.textContent;
@@ -48,12 +48,12 @@ document.addEventListener('turbolinks:load', function() {
     }
  };
 
-  var submitButton = $.one("#new-message-submit");
+  const submitButton = $.one("#new-message-submit");
   if(submitButton) {
     submitButton.addEventListener("click", onSubmit);
   }
 
-  var newEditableMessage = $.one(".new-message-editable");
+  const newEditableMessage = $.one(".new-message-editable");
   if(newEditableMessage) {
     newEditableMessage.addEventListener("keydown", function(event) {
       if(event.which === 13) {
@@ -62,7 +62,7 @@ document.addEventListener('turbolinks:load', function() {
     });
   }
 
-  var msgSubmitButton = $.one("#send-btn");
+  const msgSubmitButton = $.one("#send-btn");
   if(msgSubmitButton) {
     msgSubmitButton.addEventListener("click", onSubmit);
   }

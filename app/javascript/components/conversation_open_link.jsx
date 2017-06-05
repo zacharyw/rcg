@@ -13,22 +13,20 @@ class ConversationOpenLink extends React.Component {
   setupSubscription() {
     App.cable.subscriptions.create(
       {
-        channel: "MessagesChannel",
+        channel: "NewMessageCountsChannel",
         id: this.props.conversation_id
       },
       {
-        received: function() {
-          this.updateCount();
+        received: function(data) {
+          this.updateCount(data.count);
         },
-        // Assign updateList function from ConversationList class, so it is usable within this subscription
         updateCount: this.updateCount.bind(this)
       }
     );
   }
 
-  updateCount() {
-    // Append new conversation to front of list
-    this.setState({count: this.state.count + 1});
+  updateCount(count) {
+    this.setState({count: count});
   }
 
   render() {
