@@ -68,6 +68,10 @@
   display: flex;
 }
 
+.message-body {
+  word-break: break-all;
+}
+
 #new-message-form {
   flex-shrink: 0;
 }
