@@ -1,9 +1,9 @@
 class MessagesController < ApplicationController
   def create
     message = MessageSavor.new(
-        body: message_params[:body],
-        conversation_id: message_params[:conversation_id],
-        user: current_user
+      body: message_params[:body],
+      conversation_id: message_params[:conversation_id],
+      user: current_user
     ).perform
 
     respond_to do |format|

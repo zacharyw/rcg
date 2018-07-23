@@ -9,7 +9,13 @@
   %>
 
   <div id="new-message-form">
-    <%= form_with model: Message.new, remote: true, html: { class: 'form-inline message-form' } do |f| %>
+    <%=
+      form_with(
+        model: Message.new,
+        local: false,
+        html: { class: 'form-inline message-form' }
+      ) do |f|
+    %>
       <div id="new-message-inputs">
         <div class="panel panel-primary" id="new-message-editable-panel">
           <%= render partial: 'new_message', locals: { css_class: 'new-message-editable' }%>

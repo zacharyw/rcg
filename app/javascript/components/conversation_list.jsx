@@ -1,5 +1,5 @@
 import React from 'react';
-import Conversation from 'components/conversation';
+import Conversation from './conversation';
 
 class ConversationList extends React.Component {
   constructor(props) {

@@ -1,4 +1,5 @@
-import { outerHeight, trigger } from './util';
+import { outerHeight } from './util';
+import Rails from 'rails-ujs';
 
 let resizeTimer = null;
 
@@ -15,7 +16,7 @@ export function resizeMessages(has_alert = true) {
   if(has_alert && page_alert) {
     height = height - outerHeight(page_alert);
   }
-                                    
+
   const messages = $.one(".messages");
   if(height !== messages.offsetHeight) {
     messages.style.height = height + "px";
@@ -49,7 +50,8 @@ document.addEventListener('turbolinks:load', function() {
     event.preventDefault();
     if(editableMessageBody.textContent.trim().length !== 0) {
       $.one(".new-message-body").value = editableMessageBody.textContent;
-      trigger($.one('.message-form'), 'submit');
+      const form = document.querySelector('.message-form');
+      Rails.fire(form, 'submit');
       $.one(".new-message-body").value = '';
       editableMessageBody.innerHTML = '';
     }

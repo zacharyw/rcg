@@ -1,6 +1,14 @@
 <% if user_signed_in? %>
   <div class="panel panel-primary">
-    <%= form_with model: @new_conversation, scope: :conversation, remote: true, url: conversations_path, html: { class: 'message-form' } do |f| %>
+    <%=
+      form_with(
+        model: @new_conversation,
+        scope: :conversation,
+        url: conversations_path,
+        local: false,
+        html: { class: 'message-form' }
+      ) do |f|
+    %>
       <%= render partial: 'new_message', locals: {css_class: 'new-conversation-editable' } %>
       <%= f.text_area :body, class: 'hidden new-message-body' %>
       <div class="panel-footer clearfix">

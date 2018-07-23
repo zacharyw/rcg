@@ -1,6 +1,7 @@
 export function trigger(element, event_name) {
   const event = document.createEvent('HTMLEvents');
   event.initEvent(event_name, true, false);
+  alert(event_name);
   element.dispatchEvent(event);
 }
 

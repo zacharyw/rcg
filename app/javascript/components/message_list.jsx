@@ -1,7 +1,7 @@
 import React from 'react';
-import Message from 'components/message';
-import {resizeMessages} from 'conversations';
-import {trigger} from '../util';
+import Rails from 'rails-ujs';
+import Message from './message';
+import {resizeMessages} from '../conversations';
 
 class MessageList extends React.Component {
   constructor(props) {
@@ -25,7 +25,7 @@ class MessageList extends React.Component {
 
   static markRead() {
     if(!document.hidden) {
-      trigger($.one('#mark-read-form'), 'submit');
+      Rails.fire($.one('#mark-read-form'), 'submit');
     }
   }
 

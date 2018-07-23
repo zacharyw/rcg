@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "@rails/webpacker": "3.4",
     "autoprefixer": "^7.1.1",
     "babel-core": "^6.24.1",
     "babel-loader": "7.x",
@@ -21,20 +22,22 @@
     "postcss-loader": "^2.0.5",
     "postcss-smart-import": "^0.7.4",
     "precss": "^1.4.0",
-    "prop-types": "^15.5.10",
+    "prop-types": "^15.6.2",
     "rails-erb-loader": "^5.0.1",
-    "react": "^15.5.4",
-    "react-dom": "^15.5.4",
+    "rails-ujs": "^5.2.0",
+    "react": "^16.4.1",
+    "react-dom": "^16.4.1",
     "react_ujs": "^2.2.0",
-    "resolve-url-loader": "^2.0.2",
+    "resolve-url-loader": "^2.3.0",
     "sass-loader": "^6.0.5",
     "style-loader": "^0.18.1",
     "turbolinks": "^5.0.3",
-    "webpack": "^2.6.1",
+    "webpack": "^3.11.0",
     "webpack-manifest-plugin": "^1.1.0",
     "webpack-merge": "^4.1.0"
   },
   "devDependencies": {
-    "webpack-dev-server": "^2.4.5"
+    "webpack-cli": "^2.0.14",
+    "webpack-dev-server": "2.11.2"
   }
 }

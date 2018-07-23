@@ -1,6 +1,6 @@
 class ConversationsController < ApplicationController
   before_action :authenticate_user!, except: [:index]
-  
+
   def index
     @conversations = ConversationsFetcher.new.perform
     @new_conversation = NewConversation.new
@@ -26,22 +26,28 @@ class ConversationsController < ApplicationController
   end
 
   def show
-    @conversation = ConversationOpener.new(id: params[:id], user: current_user).perform
+    @conversation = ConversationOpener.new(
+      id: params[:id],
+      user: current_user
+    ).perform
 
-    if @conversation.nil?
-      flash.error = 'Conversation does not exist.'
-      redirect_to :index
-    end
+    return unless @conversation.nil?
+
+    flash.error = 'Conversation does not exist.'
+    redirect_to :index
   end
 
-  def destroy
-  end
+  def destroy; end
 
   def mark_read
-    ConversationReadMarker.new(user: current_user, conversation: Conversation.find(params[:conversation_id])).perform
+    ConversationReadMarker.new(
+      user: current_user,
+      conversation: Conversation.find(params[:conversation_id])
+    ).perform
   end
 
   private
+
   def conversation_params
     params.require(:conversation).permit(:body)
   end
